@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./GRC Projects/New Nist/risk-quant-engine-2/risk-quant-engine-2
+        working-directory: './Cyber Projects/GRC Projects/New Nist/risk-quant-engine-2'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -45,7 +45,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './GRC Projects/New Nist/risk-quant-engine-2/risk-quant-engine-2/dist'
+          path: './Cyber Projects/GRC Projects/New Nist/risk-quant-engine-2/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment

@@ -1,0 +1,8 @@
+node_modules/
+.terraform/
+.terraform.lock.hcl
+*.exe
+*.zip
+dist/
+build/
+.DS_Store

@@ -1,0 +1,254 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/*
+ * SENTINEL / NIST Risk Quantification design system.
+ * All theming happens through [data-theme] on <html>.
+ */
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg2);
+  --color-panel: var(--panel);
+  --color-panel2: var(--panel2);
+  --color-line: var(--line);
+  --color-line2: var(--line2);
+  --color-muted: var(--muted);
+  --color-dim: var(--dim);
+  --color-text: var(--text);
+  --color-bright: var(--bright);
+  --color-primary: var(--primary);
+  --color-primary-dim: var(--primary-dim);
+  --color-primary-glow: var(--primary-glow);
+  --color-teal: var(--teal);
+  --color-green: var(--green);
+  --color-amber: var(--amber);
+  --color-orange: var(--orange);
+  --color-red: var(--red);
+
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-border: var(--line);
+  --color-ring: var(--primary);
+
+  --font-head: "Sora", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-sm: 3px;
+  --radius-md: 5px;
+  --radius-lg: 8px;
+}
+
+/* 1 — High-Contrast Tactical Cyber (default) */
+:root,
+[data-theme="tactical"] {
+  --bg: #000000;
+  --bg2: #060606;
+  --panel: #080808;
+  --panel2: #101010;
+  --line: #1c1c1c;
+  --line2: #2b2b2b;
+  --muted: #5f5a45;
+  --dim: #9a9384;
+  --text: #ded8c6;
+  --bright: #fffdf5;
+  --primary: #ffc700;
+  --primary-dim: rgba(255, 199, 0, 0.1);
+  --primary-glow: rgba(255, 199, 0, 0.4);
+  --teal: #4fd8ff;
+  --green: #4ade80;
+  --amber: #ffc700;
+  --orange: #ff8a3d;
+  --red: #ff3b5c;
+}
+
+/* 2 — Terminal Hacker Green */
+[data-theme="matrix"] {
+  --bg: #030a05;
+  --bg2: #04100a;
+  --panel: #05140c;
+  --panel2: #071c10;
+  --line: #0d2a18;
+  --line2: #143d24;
+  --muted: #3d7a55;
+  --dim: #6fb98a;
+  --text: #b7f5ce;
+  --bright: #e7fff0;
+  --primary: #00ff66;
+  --primary-dim: rgba(0, 255, 102, 0.09);
+  --primary-glow: rgba(0, 255, 102, 0.35);
+  --teal: #24f5d0;
+  --green: #00ff66;
+  --amber: #d7f04a;
+  --orange: #ffa33d;
+  --red: #ff4d6a;
+}
+
+/* 3 — Slate Indigo */
+[data-theme="slate"] {
+  --bg: #090b10;
+  --bg2: #0e1117;
+  --panel: #13161e;
+  --panel2: #191c26;
+  --line: #1d212c;
+  --line2: #272c3a;
+  --muted: #565d75;
+  --dim: #8890a8;
+  --text: #dde0ec;
+  --bright: #f4f5fb;
+  --primary: #6f7bf7;
+  --primary-dim: rgba(111, 123, 247, 0.12);
+  --primary-glow: rgba(111, 123, 247, 0.35);
+  --teal: #2dd9c4;
+  --green: #34d399;
+  --amber: #f6ad37;
+  --orange: #fb8b50;
+  --red: #fb4f6c;
+}
+
+/* 4 — Deep Sea Cyan */
+[data-theme="abyss"] {
+  --bg: #04090d;
+  --bg2: #071219;
+  --panel: #091820;
+  --panel2: #0d212b;
+  --line: #123039;
+  --line2: #1b4550;
+  --muted: #4b7a86;
+  --dim: #7fa8b3;
+  --text: #cfe6ec;
+  --bright: #f0fbff;
+  --primary: #2dd9c4;
+  --primary-dim: rgba(45, 217, 196, 0.1);
+  --primary-glow: rgba(45, 217, 196, 0.35);
+  --teal: #2dd9c4;
+  --green: #45e0a0;
+  --amber: #ffbe4d;
+  --orange: #ff8f52;
+  --red: #ff5570;
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-head);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: var(--bg);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg2);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--line2);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+  }
+}
+
+@utility mono {
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+}
+
+@utility panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.025;
+    background-image: radial-gradient(var(--bright) 0.5px, transparent 0.5px);
+    background-size: 3px 3px;
+  }
+}
+
+@utility glow-text {
+  text-shadow: 0 0 14px var(--primary-glow);
+}
+
+@utility scanlines {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0 2px,
+      rgba(0, 0, 0, 0.22) 2px 3px
+    );
+    opacity: 0.5;
+  }
+}
+
+/* Range slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  background: var(--line2);
+  border-radius: 2px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background: var(--primary);
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--primary-glow);
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: none;
+  border-radius: 2px;
+  background: var(--primary);
+  cursor: pointer;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
